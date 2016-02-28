@@ -1,6 +1,5 @@
 # Django-Vote
-Use django 1.9.2 to create a website for voting. Python 2.7
-
+Using django 1.9.2 to create a website for voting. Python 2.7
 
 # How to run
 
@@ -8,7 +7,9 @@ Use django 1.9.2 to create a website for voting. Python 2.7
 
 2. Download the django 1.9.2
 
-> >pip install django 
+>pip install django 
+or
+>easy_install django
 
 3. Download source code for this repository
 
@@ -16,9 +17,9 @@ Use django 1.9.2 to create a website for voting. Python 2.7
 
 5. Run server 
 
-> >python manage.py migrate runserver
+>python manage.py migrate runserver
 
-and visit the website: http://127.0.0.1:8000/ to visit the home page.
+visit the website: http://127.0.0.1:8000/ to visit the home page.
 
 # To Do List
 
