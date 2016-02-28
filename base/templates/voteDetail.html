@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome !{% endblock %}
+
+{% load staticfiles %}
+
+
+{% block content_m %}
+<div id="maincolumn_m">
+
+  <div id="vote_detail_title">
+    <p>{{ vote.title }}</p>
+  </div>
+
+
+  <div id="vote_detail_content">
+    <p>{{ vote.content }} <a href="#"> Show Result </a></p>
+  </div>
+
+  <div id="vote_detail_selection">
+    <p>Questions: </p>
+
+    <form action="{% url 'voteDetail' vote.id %}" method="post">
+      {% csrf_token %}
+
+      {% for question in question_list %}
+
+      <p>{{ forloop.counter }} : {{ question.content }}</p>
+
+      {% if question.type = 'S' %}
+
+      {% for choice in question.choices.all %}
+
+      <input type="radio" name="{{ question.id }}" id="choice_{{ question.id }}_{{ forloop.counter }}" value="{{ choice.id }}" />
+
+      <label for="choice_{{ question.id }}_{{ forloop.counter }}"> {{ choice.content }}</label><br />
+
+      {% endfor %}
+
+      {% else %}
+
+      {% for choice in question.choices.all %}
+
+      <input type="checkbox" name="{{ question.id }}" id="choice_{{ question.id }}_{{ forloop.counter }}" value="{{ choice.id }}" />
+
+      <label for="choice_{{ question.id }}_{{ forloop.counter }}"> {{ choice.content }}</label><br />
+
+      {% endfor %}
+
+      {% endif %}
+
+      {% endfor %}
+
+
+      <div id="vote_detail_bottom">
+
+        {% if request.user.is_active %}
+
+        <button type="submit">submit</button>
+        <button type="reset">reset</button>
+      </div>
+      {% else %}
+
+      <p>Please login!</p>
+
+      {% endif %}
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

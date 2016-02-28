@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome !{% endblock %}
+
+{% load staticfiles %}
+
+
+{% block content_m %}
+
+<div id="maincolumn_m">
+  <ur>
+    {% for vote in votes %}
+      <li><a href="{% url 'voteDetail' vote.id %}">{{ vote.title }}</a></li>
+    {% endfor %}
+  </ur>
+</div>
+
+{% endblock %}

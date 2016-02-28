@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" >
+<head>
+  
+  <meta name="google-site-verification" content="IzkJJHfY79HNplXZY-FUZffS2ANLug0VwfLty3Azu9w" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="Theoretical Computer Science, TCS" />
+  <meta name="description" content="European Association for Theoretical Computer Science" />
+  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
+  
+  <title>{% block title %}Defalut Title{% endblock %} - Computer</title>
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+  
+</head>
+
+<body>
+
+
+<div id="wrapper">
+
+   {% block top %}
+   <div id="top">
+
+   {% if not request.user.is_active %}
+    <p>
+    <a href="{% url 'login' %}"> Log in </a>
+     /
+    <a href="{% url 'register' %}"> Register </a>
+    </p>
+    {% else %}
+    <p> Welcome, {{ request.user.profile.nickname }}({{request.user.username}})
+    <a href="{% url 'logout' %}">Logout</a>
+    </p>
+    {% endif %}
+ 	</div>
+ 	
+ 	<div class="clearfix">
+    </div>
+
+<div id="header">
+    <div id="header_r">
+        <div id="header_l">
+            <div id="logo_bg">
+                <div id="logo">
+                    <div style="text-align:center; width:1023px; ">
+                        <img id="Image-Maps_9" src="{% static 'logo02.jpg' %}" usemap="#Image-Maps_9" border="0" width="1023" height="111" alt="" />
+                        <map id="_Image-Maps_9" name="Image-Maps_9">
+                            <area shape="rect" coords="144,20,721,94" href="http://www.eatcs.org" alt="" title=""    />
+                            <area shape="rect" coords="1021,109,1023,111" href="{% static 'logo02.jpg' %}" alt="Image Map" title="Image Map" />
+                        </map>                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div id="maincolumn">
+{% block conten_l %}
+   <div id="maincolumn_l">
+    <ur>
+        <a href="{% url 'home' %}"><li>Home</li></a>
+        <a href="{% url 'polls' %}"><li>Polls</li></a>
+        <a href="#"><li>About</li></a>
+    </ur>
+</div>
+
+{% endblock %}
+
+
+{% block content_m %}
+这是基本模板的中间部分
+{% endblock %}
+
+</div>
+
+{% endblock %}
+
+</div>  
+
+</body>
+
+</html>

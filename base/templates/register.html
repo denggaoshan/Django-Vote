@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="register">
+
+<form action="" method="post">
+{% csrf_token %}
+    <ul class="contactList">
+        <li id="id_username" class="contact"><p>Username: </p>{{ form.username }}</li>
+        <div class="clearfix"> </div>
+        <li id="id_password1" class="contact"><p>Password:</p>{{ form.password1 }}</li>
+        <div class="clearfix"> </div>
+        <li id="id_password2" class="contact"><p>Password Again:</p>{{ form.password2 }}</li>
+        <div class="clearfix"> </div>
+        <li id="id_email" class="contact"><p>Email:</p>{{ form.email }}</li>
+        <div class="clearfix"> </div>
+    </ul>
+
+    <p2> {{ form.errors }} </p2>
+
+    <div id="buttom_button">
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset"/>
+    </div>
+</form>
+
+
+
+</div>
+
+
+{% endblock %}
